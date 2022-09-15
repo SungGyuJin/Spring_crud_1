@@ -16,17 +16,17 @@
 </style>
 </head>
 <body>
-	<div>
+	<form id="modifyForm" action="/bvo/modifyPage" method="post">
 		<div>
 			<label>번호</label>
 			<input type="text" name="bno" value="${list.bno}" readonly="readonly">
 		</div>
 		<div>
 			<label>제목</label>
-			<input type="text" name="title" value="${list.title}" readonly="readonly">
+			<input type="text" name="title" value="${list.title}">
 		</div>
 			<label>내용</label>
-			<input type="text" name="content" value="${list.content}" readonly="readonly">
+			<textarea name="content" rows="5">${list.content}</textarea>
 		<div>
 		</div>
 			<label>글쓴이</label>
@@ -39,11 +39,12 @@
 			<label>수정일</label>
 			<input type="text" name="updateDate" value="${list.updateDate}" readonly="readonly">
 		</div>
-	</div>
-	<hr>
+	</form>
 	<div class="btn_wrap">
-		<a class="btn" id="btn_modify">수정페이지</a>
+		<a class="btn" id="btn_modify">수정완료</a>
 		<a class="btn" id="btn_list">목록페이지</a>
+		<a class="btn" id="btn_cancel">취소</a>
+		<a class="btn" id="btn_remove">삭제</a>
 	</div>
 	
 	<form id="moveForm" action="/bvo/modifyPage" method="get">
@@ -53,12 +54,12 @@
 <script type="text/javascript">
 
 	let moveForm = $('#moveForm');
+	let modifyForm = $('#modifyForm');
 	
-	// 버튼 (수정페이지 이동)
+	// 버튼 (수정완료)
 	$('#btn_modify').on('click', function(e){
 		
-		moveForm.attr("action", "/bvo/modifyPage");
-		moveForm.submit();
+		modifyForm.submit();
 	});
 	
 	// 버튼 (목록페이지 이동)
@@ -69,6 +70,20 @@
 		moveForm.submit();
 	});
 	
+	// 버튼 (취소)
+	$('#btn_cancel').on('click', function(e){
+		
+		moveForm.attr("action", "/bvo/detailPage");
+		moveForm.submit();
+	});
+	
+	// 버튼 (삭제)
+	$('#btn_remove').on('click', function(e){
+		
+		moveForm.attr("action", "/bvo/deleteBoard");
+		moveForm.attr("method", "POST");
+		moveForm.submit();
+	});
 	
 
 </script>

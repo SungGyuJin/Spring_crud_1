@@ -14,11 +14,11 @@ public interface BoardService {
 		
 		// 게시판 상세조회
 		public BoardVO detailBoard(int bno);
-//		
-//		// 게시판 수정
-//		public void modifyBoard(BoardVO bvo);
-//		
-//		// 게시판 삭제
-//		public void deleteBoard(int bno);
+		
+		// 게시판 수정
+		public void modifyBoard(BoardVO bvo);
+		
+		// 게시판 삭제
+		public void deleteBoard(int bno);
 	
 }

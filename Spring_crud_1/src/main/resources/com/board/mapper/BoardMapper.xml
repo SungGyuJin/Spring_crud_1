@@ -26,9 +26,21 @@
   	</select>
   	
   	<!-- 수정 -->
+  	<update id="modifyBoard">
   	
+  		update mine_board set
+  		title = #{title}
+  		, content = #{content}
+  		, updateDate = now()
+  		where bno = #{bno}
+  	
+  	</update>
   	<!-- 삭제 -->
+  	<delete id="deleteBoard">
   	
+  		delete from mine_board where bno = #{bno}
+  		
+  	</delete>
   	
   	
   

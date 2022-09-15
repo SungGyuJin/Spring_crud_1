@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
+	<a href="/bvo/regPage">등록페이지</a>
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -34,23 +35,50 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
 	<form id="moveForm" method="get">
 		
 	</form>
 	
 	
 <script type="text/javascript">
+
+	$(document).ready(function(){
+		
+		let result = "<c:out value='${result}'/>";
+		
+		chkAlert(result);
+		
+		function chkAlert(result){
+			
+			if(result == ''){
+				return;
+			}
+			
+			if(result == 'enroll'){
+				alert("게시글이 등록되었습니다.");
+			}
+
+			if(result == 'modify'){
+				alert("게시글이 수정되었습니다.");
+			}
+
+			if(result == 'delete'){
+				alert("게시글이 삭제되었습니다.");
+			}
+			
+		}
+		
+	});
 	
-	let mForm = $('#moveForm');
+	let moveForm = $('#moveForm');
 	
 	$('.move').on("click", function(e){
 		
 		e.preventDefault();
 		
-		mForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
-		mForm.attr("action", "/bvo/detailPage");
-		mForm.submit();
+		moveForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
+		moveForm.attr("action", "/bvo/detailPage");
+		moveForm.submit();
 	});
 	
 	

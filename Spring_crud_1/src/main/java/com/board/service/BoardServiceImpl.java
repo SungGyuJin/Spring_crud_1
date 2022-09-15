@@ -14,22 +14,34 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper bMapper;
 	
-
+	// 전체목록
 	@Override
 	public List<BoardVO> listBoard() {
 		return bMapper.listBoard();
 	}
 
-
+	// 상세목록 이동
 	@Override
 	public BoardVO detailBoard(int bno) {
 		return bMapper.detailBoard(bno);
 	}
 
-
+	// 등록
 	@Override
 	public void regBoard(BoardVO bvo) {
 		bMapper.regBoard(bvo);
+	}
+
+	// 수정
+	@Override
+	public void modifyBoard(BoardVO bvo) {
+		bMapper.modifyBoard(bvo);
+	}
+	
+	// 삭제
+	@Override
+	public void deleteBoard(int bno) {
+		bMapper.deleteBoard(bno);
 	}
 
 
