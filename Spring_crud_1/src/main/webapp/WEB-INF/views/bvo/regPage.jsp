@@ -21,5 +21,6 @@
 		<div>
 		<button>등록</button>
 	</form>
+	
 </body>
 </html>
