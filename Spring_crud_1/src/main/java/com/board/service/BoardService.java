@@ -3,6 +3,7 @@ package com.board.service;
 import java.util.List;
 
 import com.board.model.BoardVO;
+import com.board.model.Criteria;
 
 public interface BoardService {
 
@@ -20,5 +21,10 @@ public interface BoardService {
 		
 		// 게시판 삭제
 		public void deleteBoard(int bno);
-	
+		
+		// 페이징
+		public List<BoardVO> listPaging(Criteria cri);
+		
+		// 총 게시물 수
+		public int boardTotal();
 }

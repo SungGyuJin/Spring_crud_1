@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.model.BoardVO;
+import com.board.model.Criteria;
+import com.board.model.PageDTO;
 import com.board.service.BoardService;
 
 @Controller
@@ -20,8 +22,14 @@ public class BoardController {
 	
 	// 이동 - 목록 페이지
 	@GetMapping("/listPage")
-	public void listGET(Model model, RedirectAttributes rttr) {
-		model.addAttribute("list", bService.listBoard());
+	public void listGET(Model model, Criteria cri) {
+		
+		model.addAttribute("list", bService.listPaging(cri));
+		
+		// 게시글 총 갯수
+		int total = bService.boardTotal();
+		
+		model.addAttribute("pageMaker", new PageDTO(total, cri));
 	}
 	
 	// 이동 - 상세목록 페이지

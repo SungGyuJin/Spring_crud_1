@@ -8,6 +8,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<style>
+	
+	.pageInfo{
+		list-style: none;
+		margin: 50px 0 0 100px;
+	}
+
+	.pageBtn li{
+		float: left;
+		margin: 0 0 0 20px;
+	}
+	.active{
+		background-color: pink;
+	}
+</style>
 </head>
 <body>
 	<a href="/bvo/regPage">등록페이지</a>
@@ -35,8 +50,32 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<div class="pageBtn">
+		<div class="pageBtn_area">
+			<ul class="pageInfo" id="pageInfo">
+			
+				<!-- 이전버튼 -->
+				<c:if test="${pageMaker.prev}">
+					<li class="pageInfo_btn prev"><a href="${pageMaker.startPage - 1}">이전</a></li>
+				</c:if>
+			
+				<!-- 페이지 번호 -->
+				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					<li class="pageBtn_li ${pageMaker.cri.nowPage == num ? "active":""}"><a href="${num}">${num}</a></li>
+				</c:forEach>
+				
+				<!-- 다음버튼 -->
+				<c:if test="${pageMaker.next}">
+					<li class="pageInfo_btn prev"><a href="${pageMaker.endPage + 1}">다음</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
+	
 	<form id="moveForm" method="get">
-		
+		<input type="hidden" name="nowPage" value="${pageMaker.cri.nowPage}">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 	</form>
 	
 	
@@ -78,6 +117,15 @@
 		
 		moveForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
 		moveForm.attr("action", "/bvo/detailPage");
+		moveForm.submit();
+	});
+	
+	$('#pageInfo a').on("click", function(e){
+		
+		e.preventDefault();
+		
+		moveForm.find("input[name='nowPage']").val($(this).attr("href"));
+		moveForm.attr("action", "/bvo/listPage");
 		moveForm.submit();
 	});
 	

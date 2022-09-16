@@ -42,7 +42,20 @@
   		
   	</delete>
   	
+  	<!-- 페이징 -->
+  	<select id="listPaging" resultType="com.board.model.BoardVO">
   	
+  		select * from mine_board
+  		limit #{limit}, #{amount}
+  		
+  	</select>
+  	
+  	<!-- 총 게시물 수 -->
+  	<select id="boardTotal" resultType="int">
+  	
+  		select count(*) from mine_board
+  	
+  	</select>
   
   	
   </mapper>
