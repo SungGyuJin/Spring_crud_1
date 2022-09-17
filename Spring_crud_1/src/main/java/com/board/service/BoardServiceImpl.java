@@ -52,8 +52,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int boardTotal() {
-		return bMapper.boardTotal();
+	public int boardTotal(Criteria cri) {
+		return bMapper.boardTotal(cri);
 	}
 
 

@@ -10,6 +10,9 @@ public class Criteria {
 
 	// 행조절
 	private int limit;
+		
+	// 검색
+	private String keyword;
 
 	public Criteria() {
 		this(1, 10);
@@ -48,9 +51,20 @@ public class Criteria {
 		this.limit = limit;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	@Override
 	public String toString() {
-		return "Criteria [nowPage=" + nowPage + ", amount=" + amount + ", limit=" + limit + "]";
+		return "Criteria [nowPage=" + nowPage + ", amount=" + amount + ", limit=" + limit + ", keyword=" + keyword
+				+ "]";
 	}
+
+	
 	
 }

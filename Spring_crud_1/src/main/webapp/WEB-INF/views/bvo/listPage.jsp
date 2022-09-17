@@ -22,6 +22,20 @@
 	.active{
 		background-color: pink;
 	}
+	.search_area{
+    	display: inline-block;
+    	margin-top: 30px;
+    	margin-left: 260px;
+  	}
+  	.search_area input{
+    	height: 30px;
+    	width: 250px;
+  	}
+  	.search_area button{
+  		width: 100px;
+    	height: 36px;
+    	cursor: pointer;
+  	}
 </style>
 </head>
 <body>
@@ -37,7 +51,7 @@
 		</tr>
 		<tbody>
 			<c:forEach items="${list}" var="list">
-				<tr>
+				<tr>	
 					<td><c:out value="${list.bno}"/></td>
 					<td>
 						<a class="move" href="<c:out value='${list.bno}'/>"><c:out value="${list.title}"/></a>
@@ -50,6 +64,13 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<br>
+	<div class="search_wrap">
+		<div class="search_area">
+			<input type="text" name="keyword" value="${pageMaker.cri.keyword}">
+			<button>검색</button>
+		</div>	
+	</div>
 	
 	<div class="pageBtn">
 		<div class="pageBtn_area">
@@ -76,6 +97,7 @@
 	<form id="moveForm" method="get">
 		<input type="hidden" name="nowPage" value="${pageMaker.cri.nowPage}">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	</form>
 	
 	
@@ -104,9 +126,7 @@
 			if(result == 'delete'){
 				alert("게시글이 삭제되었습니다.");
 			}
-			
 		}
-		
 	});
 	
 	let moveForm = $('#moveForm');
@@ -129,7 +149,15 @@
 		moveForm.submit();
 	});
 	
-	
+	$(".search_area button").on("click", function(e){
+		
+		e.preventDefault();
+		
+		let val = $("input[name='keyword']").val();
+		moveForm.find("input[name='keyword']").val(val);
+		moveForm.find("input[name='nowPage']").val(1);
+		moveForm.submit();
+	});
 	
 </script>
 </body>	

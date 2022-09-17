@@ -27,7 +27,7 @@ public class BoardController {
 		model.addAttribute("list", bService.listPaging(cri));
 		
 		// 게시글 총 갯수
-		int total = bService.boardTotal();
+		int total = bService.boardTotal(cri);
 		
 		model.addAttribute("pageMaker", new PageDTO(total, cri));
 	}
