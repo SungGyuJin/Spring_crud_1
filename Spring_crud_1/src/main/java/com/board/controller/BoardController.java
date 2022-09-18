@@ -34,14 +34,20 @@ public class BoardController {
 	
 	// 이동 - 상세목록 페이지
 	@GetMapping("/detailPage")
-	public void detailMoveGET(int bno, Model model) {
+	public void detailMoveGET(int bno, Model model, Criteria cri) {
+
 		model.addAttribute("list", bService.detailBoard(bno));
+
+		model.addAttribute("cri", cri);
 	}
 	
 	// 이동 - 수정 페이지
 	@GetMapping("/modifyPage")
-	public void modifyMoveGET(int bno, Model model) {
+	public void modifyMoveGET(int bno, Model model, Criteria cri) {
+		
 		model.addAttribute("list", bService.detailBoard(bno));
+		
+		model.addAttribute("cri", cri);
 	}
 	
 	// 이동 - 등록 페이지

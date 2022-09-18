@@ -48,7 +48,10 @@
 	</div>
 	
 	<form id="moveForm" action="/bvo/modifyPage" method="get">
-		<input type="hidden" id="bno" name="bno" value='<c:out value="${list.bno}"/>'>
+		<input type="text" id="bno" name="bno" value='<c:out value="${list.bno}"/>'>
+		<input type="text" name="nowPage" value="<c:out value='${cri.nowPage}'/>">
+		<input type="text" name="amount" value="<c:out value='${cri.amount}'/>">
+		<input type="hidden" name="keyword" value="${cri.keyword }">
 	</form>
 	
 <script type="text/javascript">

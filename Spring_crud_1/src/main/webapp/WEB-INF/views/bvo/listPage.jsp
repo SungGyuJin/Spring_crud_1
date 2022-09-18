@@ -44,7 +44,6 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
-			<th>내용</th>
 			<th>글쓴이</th>
 			<th>등록일</th>
 			<th>수정일</th>
@@ -56,7 +55,6 @@
 					<td>
 						<a class="move" href="<c:out value='${list.bno}'/>"><c:out value="${list.title}"/></a>
 					</td>
-					<td><c:out value="${list.content}"/></td>
 					<td><c:out value="${list.writer}"/></td>
 					<td><fmt:formatDate value="${list.regDate}" pattern="yyyy/MM/dd"/></td>
 					<td><fmt:formatDate value="${list.updateDate}" pattern="yyyy/MM/dd"/></td>
@@ -95,9 +93,9 @@
 	</div>
 	
 	<form id="moveForm" method="get">
-		<input type="hidden" name="nowPage" value="${pageMaker.cri.nowPage}">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+		<input type="text" name="nowPage" value="${pageMaker.cri.nowPage}">
+		<input type="text" name="amount" value="${pageMaker.cri.amount}">
+		<input type="text" name="keyword" value="${pageMaker.cri.keyword}">
 	</form>
 	
 	
